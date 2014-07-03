@@ -1,0 +1,65 @@
+<html>
+<head>
+  <style>
+    body { font-family: Helvetica, Arial; }
+    div.cprNumber { float: left; padding: 3px; }
+  </style>
+</head>
+<body>
+<h1>CPR calculator</h1>
+<p>Note: Only valid for CPR numbers given before 2007.</p>
+<p>Birthday:
+  <select id="year" onChange="calculateCpr();">
+  </select>
+  <select id="month" onChange="calculateCpr();">
+    <option value="01">January</option>
+    <option value="02">February</option>
+    <option value="03">March</option>
+    <option value="04">April</option>
+    <option value="05">May</option>
+    <option value="06">June</option>
+    <option value="07">July</option>
+    <option value="08">August</option>
+    <option value="09">September</option>
+    <option value="10">October</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+  </select>
+  <select id="day" onChange="calculateCpr();">
+  </select>
+</p>
+<p>
+  <input type="radio" name="gender" id="maleRadioButton" checked="checked" onChange="calculateCpr();" /> Male<br/>
+  <input type="radio" name="gender" onChange="calculateCpr();" /> Female
+</p>
+<h2>First six digits</h2>
+<p id="firstSix"></p>
+<h2>Possible last four digits</h2>
+<div id="possibleLastFour"></div>
+<script type="text/javascript" src="cprcalc.js"></script>
+<script type="text/javascript">
+  // populate year and day drop downs
+  yearElm = document.getElementById('year');
+  for(i=1900; i<2007; i++) yearElm.insertAdjacentHTML('beforeend', '<option value="'+ i +'">'+ i +'</option>');
+  dayElm = document.getElementById('day');
+  for(i=01; i<=31; i++) dayElm.insertAdjacentHTML('beforeend', '<option value="'+ i +'">'+ i +'</option>');
+
+  function calculateCpr() {
+    day = document.getElementById("day").value;
+    month = document.getElementById("month").value;
+    year = document.getElementById("year").value;
+    document.getElementById("firstSix").innerHTML = cprCalc.firstSixDigits(year,month,day);
+    isMale = document.getElementById("maleRadioButton").checked;
+    genderCode = isMale ? "m" : "f";
+    possibleLastFourDiv = document.getElementById("possibleLastFour");
+    lastFour = cprCalc.possibleLastFour(genderCode, year, month, day);
+    buf = "";
+    for(i=0; i<lastFour.length; i++) {
+      numberClass = "cprNumber"
+      buf = buf + "<div class='"+numberClass+"'>" +  lastFour[i] + "</div>"
+    }
+    possibleLastFourDiv.innerHTML = buf;
+  }
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 Calculate the possible last four digits of Danish CPR numbers (personal identification numbers). In Javascript. Useful for CPR numbers given until the year 2007.
 
 ## Usage
-Either (open index.html for a graphical interface)[http://lau.github.io/cprcalc/]. Or call the javascript function possibleLastFour with gender, year, month, day. Example:
+Either [open index.html for a graphical interface](http://lau.github.io/cprcalc). Or call the javascript function possibleLastFour with gender, year, month, day. Example:
 
     cprCalc.possibleLastFour("f", 1966, 12, 14);
 

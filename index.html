@@ -29,8 +29,12 @@
   </select>
 </p>
 <p>
-  <input type="radio" name="gender" id="maleRadioButton" checked="checked" onChange="calculateCpr();" /> Male<br/>
-  <input type="radio" name="gender" onChange="calculateCpr();" /> Female
+  <label for="maleRadioButton">
+    <input type="radio" name="gender" id="maleRadioButton" checked="checked" onChange="calculateCpr();" /> Male<br/>
+  </label>
+  <label for="femaleRadioButton">
+    <input type="radio" name="gender" id="femaleRadioButton" onChange="calculateCpr();" /> Female
+  </label>
 </p>
 <h2>First six digits</h2>
 <p id="firstSix"></p>

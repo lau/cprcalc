@@ -3,6 +3,7 @@
   <style>
     body { font-family: Helvetica, Arial; }
     div.cprNumber { float: left; padding: 3px; }
+    div.discardByBirthCount { color: #ccc; text-decoration: line-through; }
   </style>
 </head>
 <body>
@@ -36,6 +37,10 @@
     <input type="radio" name="gender" id="femaleRadioButton" onChange="calculateCpr();" /> Female
   </label>
 </p>
+<p>
+ Number of babies with that sex born that day (optional):<br />
+<input type="text" id="birthCount" value="200" onKeyUp="calculateCpr();" />
+</p>
 <h2>First six digits</h2>
 <p id="firstSix"></p>
 <h2>Possible last four digits</h2>
@@ -49,6 +54,7 @@
   for(i=01; i<=31; i++) dayElm.insertAdjacentHTML('beforeend', '<option value="'+ i +'">'+ i +'</option>');
 
   function calculateCpr() {
+    birthCount = parseInt(document.getElementById("birthCount").value);
     day = document.getElementById("day").value;
     month = document.getElementById("month").value;
     year = document.getElementById("year").value;
@@ -60,6 +66,7 @@
     buf = "";
     for(i=0; i<lastFour.length; i++) {
       numberClass = "cprNumber"
+      if (birthCount>0 && i>birthCount-1) numberClass = numberClass + " discardByBirthCount";
       buf = buf + "<div class='"+numberClass+"'>" +  lastFour[i] + "</div>"
     }
     possibleLastFourDiv.innerHTML = buf;

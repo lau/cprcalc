@@ -1,5 +1,8 @@
 # Danish CPR number calculator
 
+[![Build
+Status](https://travis-ci.org/lau/cprcalc.svg?branch=master =90x18)](https://travis-ci.org/lau/cprcalc)
+
 Calculate the possible last four digits of Danish CPR numbers (personal identification numbers). In Javascript. Useful for CPR numbers given until the year 2007.
 
 ## Usage

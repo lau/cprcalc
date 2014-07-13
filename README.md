@@ -13,3 +13,8 @@ The methods used to exclude the possible numbers are:
 2. Exclusion by 7th digit and year combination: http://da.wikipedia.org/wiki/CPR-nummer#Under_eller_over_100_.C3.A5r
 
 Method 2 is currently only fully supported for years of birth between 1937 and 1999.
+
+## License
+
+Copyright (c) 2014 Lau Taarnskov. See the LICENSE file for license rights and
+limitations (MIT).
